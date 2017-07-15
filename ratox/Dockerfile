@@ -18,7 +18,7 @@ RUN apk --no-cache add libsodium libconfig && \
         opus-dev \
         unzip
 RUN mkdir -p /tmp/tox
-RUN chown ratox:ratox /tmp/tox
+#RUN chown ratox:ratox /tmp/tox
 ADD https://github.com/toktok/c-toxcore/archive/master.zip /tmp/tox/master.zip
 RUN chmod 644 /tmp/tox/master.zip
 WORKDIR /tmp/tox
