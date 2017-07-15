@@ -1,6 +1,6 @@
 all:
-	make dhtvpn-network-create
-	make build-ratox
+	make dhtvpn-network-create; \
+	make build-ratox; \
 	make build-openvpn
 
 include ratox/include.mk
