@@ -20,3 +20,8 @@ client-openvpn:
 		--network dhtvpn-network \
 		--ip 192.168.5.3 \
 		-t alpine-openvpn openvpn --config /etc/openvpn/client/client.conf
+
+openvpn-get-ccert:
+	docker cp alpine-openvpn-server:/etc/openvpn/client/dhtvpn-client.crt .
+	docker cp alpine-openvpn-server:/etc/openvpn/client/dhtvpn-client.key .
+	docker cp alpine-openvp-server:/etc/openvpn/client/ca.crt .
