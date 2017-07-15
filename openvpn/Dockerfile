@@ -27,8 +27,8 @@ RUN echo 'proto udp' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'dev tun' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'ca /etc/openvpn/server/ca.cert' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'cert /etc/openvpn/server/dhtvpn-server.crt' | tee -a /etc/openvpn/server/server.conf
+RUN echo 'key /etc/openvpn/server/dhtvpn-server.key' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'tls-auth /etc/openvpn/easyrsa/ca/ta.key 0' | tee -a /etc/openvpn/server/server.conf
-RUN echo 'hey /etc/openvpn/server/dhtvpn-server.key' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'dh /etc/openvpn/easyrsa/ca/dh2048.pem' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'server 10.0.0.0 255.255.255.0' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'ifconfig-pool-persist ipp.txt' | tee -a /etc/openvpn/server/server.conf
@@ -51,9 +51,9 @@ RUN echo 'nobind' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'ns-cert-type server' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'persist-key' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'persist-tun' | tee -a /etc/openvpn/client/client.conf
-RUN echo 'ca /etc/openvpn/client/ca.cert' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'cert /etc/openvpn/client/dhtvpn-client.crt' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'key /etc/openvpn/client/dhtvpn-client.key' | tee -a /etc/openvpn/client/client.conf
+RUN echo 'ca /etc/openvpn/client/ca.cert' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'comp-lzo' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'verb 3' | tee -a /etc/openvpn/client/client.conf
 
