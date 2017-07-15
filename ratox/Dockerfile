@@ -1,6 +1,6 @@
 FROM alpine
 RUN addgroup -S ratox
-RUN adduser -h /var/lib/ratox -g "Account to run ratox" -s /sbin/nologin -G ratox -S -D -H ratox
+RUN adduser -h /var/lib/ratox -g "Account to run ratox" -s /sbin/nologin -G grsec-tpe -G ratox -S -D -H ratox
 RUN install -d -o ratox -g ratox -m 700 /var/lib/ratox
 RUN apk --no-cache add libsodium libconfig && \
         apk --no-cache add --virtual build-dependencies \
@@ -61,6 +61,7 @@ RUN chmod 755 /usr/bin/dhtvpn-connect-all
 
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
+RUN gpasswd -d ratox grsec-tpe
 USER ratox
 WORKDIR /var/lib/ratox
 CMD ["/usr/local/bin/ratox"]
