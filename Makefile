@@ -1,5 +1,5 @@
 all:
-	make dhtvpn-network
+	make dhtvpn-network-create
 	make build-ratox
 	make build-openvpn
 
