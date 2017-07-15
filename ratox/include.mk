@@ -43,4 +43,4 @@ ratox-send-request:
 	docker exec \
 		--user ratox \
 		-t alpine-ratox \
-		/bin/sh "echo $(peer) > request/in"
+		/bin/sh -c "echo $(peer) > request/in"

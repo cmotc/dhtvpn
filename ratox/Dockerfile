@@ -26,8 +26,8 @@ USER root
 RUN unzip -aq master.zip
 WORKDIR /tmp/tox/c-toxcore-master
 RUN chown root:root -R /tmp/tox/c-toxcore-master
-RUN /bin/sh ./autogen.sh
-RUN /bin/sh ./configure --enable-daemon --disable-ntox
+RUN ./autogen.sh
+RUN ./configure --enable-daemon --disable-ntox
 RUN make
 USER root
 RUN make install
@@ -63,7 +63,7 @@ RUN chmod 755 /usr/bin/dhtvpn-connect-all
 
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
-RUN delgroup ratox grsec-tpe
+RUN delgroup ratox grsec-tpe;
 USER ratox
 WORKDIR /var/lib/ratox
 CMD ["/usr/local/bin/ratox"]
