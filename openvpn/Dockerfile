@@ -69,7 +69,3 @@ RUN cp pki/ca.crt /etc/openvpn/client/
 RUN cp pki/issued/dhtvpn-client.crt /etc/openvpn/client
 RUN cp pki/private/dhtvpn-client.key /etc/openvpn/client
 
-RUN find . -name *.pem
-RUN find . -name *.crt
-RUN find . -name *.key
-
