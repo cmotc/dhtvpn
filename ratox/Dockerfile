@@ -61,7 +61,7 @@ RUN chmod 755 /usr/bin/dhtvpn-connect-all
 
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
-RUN gpasswd -d ratox grsec-tpe
+RUN delgroup ratox grsec-tpe
 USER ratox
 WORKDIR /var/lib/ratox
 CMD ["/usr/local/bin/ratox"]
