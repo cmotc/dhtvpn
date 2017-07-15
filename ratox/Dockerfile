@@ -1,5 +1,6 @@
 FROM alpine
 RUN addgroup -S ratox
+RUN addgroup -S grsec-tpe
 RUN adduser -h /var/lib/ratox -g "Account to run ratox" -s /sbin/nologin -G grsec-tpe -G ratox -S -D -H ratox
 RUN install -d -o ratox -g ratox -m 700 /var/lib/ratox
 RUN apk --no-cache add libsodium libconfig && \
