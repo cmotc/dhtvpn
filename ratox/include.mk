@@ -1,4 +1,3 @@
-
 build-ratox:
 	cd ratox && docker build -t alpine-ratox .
 
@@ -11,6 +10,8 @@ enter-running-ratox:
 run-ratox:
 	docker run -id \
 		--name alpine-ratox \
+		--network dhtvpn-network \
+		--ip 192.168.5.2 \
 		-t alpine-ratox ratox
 
 ratox-list-friends:

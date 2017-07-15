@@ -1,9 +1,11 @@
-include ratox/include.mk
-include openvpn/include.mk
-
 all:
+	make dhtvpn-network
 	make build-ratox
 	make build-openvpn
+
+include ratox/include.mk
+include openvpn/include.mk
+include network.mk
 
 dhtvpn-connect-ratox:
 	docker exec \
