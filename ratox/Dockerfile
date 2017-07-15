@@ -25,7 +25,7 @@ USER ratox
 RUN unzip -aq master.zip
 WORKDIR /tmp/tox/c-toxcore-master
 RUN /bin/sh ./autogen.sh
-RUN /bin/sh ./configure --host --prefix=/usr --enable-daemon --disable-ntox
+RUN /bin/sh ./configure --host --disable-daemon --disable-ntox
 RUN make
 USER root
 RUN make install
