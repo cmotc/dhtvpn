@@ -37,3 +37,10 @@ ratox-get-id:
 		--user ratox \
 		-t alpine-ratox \
 		cat /var/lib/ratox/id
+
+ratox-send-request:
+	@echo $(peer)
+	docker exec \
+		--user ratox \
+		-t alpine-ratox \
+		/bin/sh "echo $(peer) > request/in"
