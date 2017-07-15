@@ -1,6 +1,6 @@
 FROM alpine
 RUN addgroup -S ratox
-RUN addgroup -S grsec-tpe
+RUN addgroup grsec-tpe
 RUN adduser -h /var/lib/ratox -g "Account to run ratox" -s /sbin/nologin -G grsec-tpe -G ratox -S -D -H ratox
 RUN install -d -o ratox -g ratox -m 700 /var/lib/ratox
 RUN apk --no-cache add libsodium libconfig && \
@@ -25,8 +25,8 @@ WORKDIR /tmp/tox
 USER ratox
 RUN unzip -aq master.zip
 WORKDIR /tmp/tox/c-toxcore-master
-RUN ./autogen.sh
-RUN ./configure --enable-daemon --disable-ntox
+RUN /bin/sh ./autogen.sh
+RUN /bin/sh ./configure --enable-daemon --disable-ntox
 RUN make
 USER root
 RUN make install
