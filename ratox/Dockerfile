@@ -40,16 +40,28 @@ RUN make
 USER root
 RUN make install
 RUN echo '#! /bin/sh' | tee /usr/bin/ratox-list-friends
-RUN echo 'find /var/lib/ratox/ -type d ! -name name ! -name request ! -name 'out' ! -name state ! -name status ! -name nospam | tr -d './' | grep .' | tee -a /usr/bin/ratox-list-friends
+RUN echo 'find /var/lib/ratox/ -type d ! -name name ! -name request ! -name 'out' ! -name state ! -name status ! -name nospam ! -name conf' | tee -a /usr/bin/ratox-list-friends
 RUN chmod 755 /usr/bin/ratox-list-friends
+
+RUN echo '#! /bin/sh' | tee /usr/bin/ratox-list-requests
+RUN echo 'find /var/lib/ratox/request/out/' | tee -a /usr/bin/ratox-list-requests
+RUN chmod 755 /usr/bin/ratox-list-requests
+
+RUN echo '#! /bin/sh' | tee /usr/bin/ratox-accept-friends
+RUN echo 'for friend_request in $(ratox-list-requests); do' | tee -a /usr/bin/ratox-accept-friends
+RUN echo '   echo 1 > $friend_request' | tee -a /usr/bin/ratox-accept-friends
+RUN echo 'done ' | tee -a /usr/bin/ratox-accept-friends
+RUN chmod 755 /usr/bin/ratox-accept-friends
+
 RUN echo '#!/bin/sh' | tee /usr/bin/dhtvpn-connect-all
 RUN echo 'for tox_friend in $(ratox-list-friends); do' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '   cat < $tox_friend/file_out | nc -u 192.168.3.133 1194 > $tox_friend/file_in' | tee -a /usr/bin/dhtvpn-connect-all
+RUN echo '   cat < $tox_friend/file_out | nc -u 192.168.3.101 1194 > $tox_friend/file_in' | tee -a /usr/bin/dhtvpn-connect-all
 RUN echo 'done' | tee -a /usr/bin/dhtvpn-connect-all
 RUN chmod 755 /usr/bin/dhtvpn-connect-all
+
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
 USER ratox
 WORKDIR /var/lib/ratox
-#CMD ["/usr/local/bin/ratox"]
-#[, "", "", ""]
+CMD ["/usr/local/bin/ratox"]
+
