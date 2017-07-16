@@ -8,7 +8,7 @@ enter-running-ratox:
 	docker exec -i -t alpine-ratox /bin/sh
 
 run-ratox:
-	docker run -id \
+	docker run -id --rm \
 		--name alpine-ratox \
 		--network dhtvpn-network \
 		--ip 192.168.5.2 \
@@ -44,3 +44,4 @@ ratox-send-request:
 		--user ratox \
 		-t alpine-ratox \
 		/bin/sh -c "echo $(peer) > request/in"
+

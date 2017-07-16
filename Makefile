@@ -9,13 +9,19 @@ include ratox/include.mk
 include openvpn/include.mk
 include network.mk
 
-dhtvpn-connect-ratox:
+dhtvpn-connect-all:
 	docker exec \
+		-d \
 		--user ratox \
 		-t alpine-ratox \
 		/usr/bin/dhtvpn-connect-all
 
-#dhtvpn-connect-openvpn:
+ratox-server-pipecheck:
+	docker exec \
+		--user ratox \
+		-t alpine-ratox \
+		ps aux
 
 prune:
 	docker system prune -f
+
