@@ -20,7 +20,7 @@ run-ratox:
 	make ratox-get-id | tail -n +4
 
 ratox-clean-id:
-	$(shell make docker exec \
+	$(shell docker exec \
 		--user ratox \
 		-t alpine-ratox \
 		cat /var/lib/ratox/id)
