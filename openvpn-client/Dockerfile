@@ -20,15 +20,6 @@ WORKDIR /usr/share/easy-rsa
 
 RUN cp /usr/share/easy-rsa/vars.example /etc/openvpn/keys/vars
 
-RUN openvpn --genkey --secret ta.key
-RUN ./easyrsa init-pki
-RUN ./easyrsa --batch build-ca nopass
-
-RUN ./easyrsa --batch build-server-full dhtvpn-server nopass
-
-RUN ./easyrsa --batch build-client-full dhtvpn-client nopass
-RUN ./easyrsa gen-dh
-
 RUN echo 'local 127.0.0.1' | tee /etc/openvpn/server/server.conf
 RUN echo 'port 1194' | tee -a /etc/openvpn/server/server.conf
 RUN echo 'proto udp' | tee -a /etc/openvpn/server/server.conf
@@ -68,19 +59,10 @@ RUN echo 'ca pki/ca.cert' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'comp-lzo' | tee -a /etc/openvpn/client/client.conf
 RUN echo 'verb 3' | tee -a /etc/openvpn/client/client.conf
 
+COPY pki .
 
-RUN cp ta.key /etc/openvpn/easyrsa/ca
-RUN cp pki/ca.crt /etc/openvpn/easyrsa/ca
-RUN cp pki/dh.pem /etc/openvpn/easyrsa/ca
-
-RUN cp pki/ca.crt /etc/openvpn/server/
-RUN cp pki/issued/dhtvpn-server.crt /etc/openvpn/server
-RUN cp pki/private/dhtvpn-server.key /etc/openvpn/server
-
-RUN cp pki/ca.crt /etc/openvpn/client/
-RUN cp pki/issued/dhtvpn-client.crt /etc/openvpn/client
-RUN cp pki/private/dhtvpn-client.key /etc/openvpn/client
 RUN echo '#! /bin/sh' | tee /bin/start-vpn-server
 RUN echo '/sbin/tun1_set && openvpn --config /etc/openvpn/server/server.conf' | tee -a /bin/start-vpn-server
 RUN chmod 755 /bin/start-vpn-server
+
 EXPOSE 1194/udp

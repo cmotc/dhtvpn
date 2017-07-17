@@ -45,3 +45,8 @@ ratox-send-request:
 		-t alpine-ratox \
 		/bin/sh -c "echo $(peer) > request/in"
 
+ratox-pipelog:
+	docker exec \
+		--user ratox \
+		-t alpine-ratox \
+		cat *.log *.err
