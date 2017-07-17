@@ -1,1 +1,2 @@
 openvpn-client/pki/*
+config.mk

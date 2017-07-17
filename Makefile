@@ -12,7 +12,7 @@ include ratox/include.mk
 include openvpn/include.mk
 include openvpn-client/include.mk
 include network.mk
-#include config.mk
+include config.mk
 
 dhtvpn-connect-all:
 	docker exec \
