@@ -20,7 +20,7 @@ run-ratox:
 	make ratox-get-id | tail -n +4
 
 ratox-clean-id:
-	make ratox-get-id | tail -n +6
+	$(shell make ratox-get-id) | tail -n +4
 
 run-ratox-client:
 	docker run -id \
