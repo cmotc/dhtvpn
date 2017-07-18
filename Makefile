@@ -57,4 +57,4 @@ prune:
 	docker system prune -f
 
 tar:
-	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client config.mk openvpn/include.mk ratox/include.mk client.save
+	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client config.mk openvpn/include.mk ratox/include.mk ratox-client/client.save

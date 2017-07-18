@@ -32,6 +32,7 @@ run-ratox-client:
 		--name alpine-ratox-client \
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
+		-v ratox-client:/var/lib/ratox/ \
 		-p 1194:1194 \
 		-t alpine-ratox ratox client.save
 	sleep 2
