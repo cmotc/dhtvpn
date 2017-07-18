@@ -15,9 +15,9 @@ run-ratox:
 		--name alpine-ratox \
 		--network dhtvpn-network \
 		--ip 192.168.5.2 \
-		-t alpine-ratox ratox
+		-t alpine-ratox ratox server.save
 	sleep 2
-	make ratox-get-id | tail -n +4
+	make ratox-get-id
 
 ratox-clean-id:
 	@grep -v ratox_service config.mk > config.mk.tmp; \
@@ -33,7 +33,7 @@ run-ratox-client:
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
 		-p 1194:1194 \
-		-t alpine-ratox ratox
+		-t alpine-ratox ratox client.save
 	sleep 2
 	make ratox-get-id-client
 
@@ -96,3 +96,7 @@ ratox-pipelog:
 		--user ratox \
 		-t alpine-ratox \
 		cat *.log *.err
+
+ratox-copy-saves:
+	docker cp alpine-ratox:/var/lib/ratox/server.save .
+	docker cp alpine-ratox-client:/var/lib/ratox/client.save .

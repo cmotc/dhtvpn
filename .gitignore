@@ -2,3 +2,6 @@ openvpn-client/pki/*
 config.mk
 redist.tar
 redist.tar.gz
+client.save
+server.save
+*.save
