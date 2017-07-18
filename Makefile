@@ -19,11 +19,7 @@ all:
 	make ratox-client-friend-request && sleep 3
 	make ratox-client-clean-id
 	make ratox-accept-friends
-	#docker stop alpine-ratox
-	#docker stop alpine-ratox-client
 	make ratox-copy-saves
-	mv client.save ratox-client/client.save
-	mv server.save ratox/server.save
 	@echo "Building Client Containers Complete"
 	make tar
 	#make run-openvpn
