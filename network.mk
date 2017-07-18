@@ -24,3 +24,14 @@ grharden:
 check-config-exists:
 	$(shell [ -f config.mk ] && sed -i 's|#include config.mk| include config.mk|' Makefile)
 	@echo config exists
+
+push:
+	sed -i 's|#include config.mk| include config.mk|' Makefile
+	git add .
+	git commit -am "fine-tuning"
+	git push
+
+pull:
+	sed -i 's| include config.mk|#include config.mk|' Makefile
+	git commit -am "stash"
+	git pull
