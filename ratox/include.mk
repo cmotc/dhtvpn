@@ -39,7 +39,7 @@ run-ratox-client:
 ratox-client-clean-id:
 	@grep -v ratox_client config.mk > config.mk.tmp; \
 	mv config.mk.tmp config.mk
-	@echo ratox_service = $(shell docker exec \
+	@echo ratox_client = $(shell docker exec \
 		--user ratox \
 		-t alpine-ratox-client \
 		cat /var/lib/ratox/id) >> config.mk

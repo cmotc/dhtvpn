@@ -37,7 +37,7 @@ dhtvpn-connect-all:
 		-d \
 		--user ratox \
 		-t alpine-ratox \
-		/usr/bin/dhtvpn-connect-all
+		cat < $(ratox_client)/file_out | nc -u 192.168.5.3 1194 > $(ratox_client)/file_in'
 
 ratox-server-pipecheck:
 	docker exec \

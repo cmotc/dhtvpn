@@ -57,18 +57,18 @@ RUN echo '  fi' | tee -a /usr/bin/ratox-accept-friends
 RUN echo 'done' | tee -a /usr/bin/ratox-accept-friends
 RUN chmod 755 /usr/bin/ratox-accept-friends
 
-RUN echo '#!/bin/sh' | tee /usr/bin/dhtvpn-connect-all
-RUN echo 'for tox_friend in $(ratox-list-friends); do' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '  if [ -p "$tox_friend/file_out" ]; then' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '    echo "connecting $tox_friend to openVPN" >> connect.log' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '  fi' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '  if [ -p "$tox_friend/file_out" ]; then' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '    cat < $tox_friend/file_out | nc -u 192.168.5.3 1194 > $tox_friend/file_in' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '  else' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '    echo "$tox_friend/file_out not found" >> connect.err' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo '  fi' | tee -a /usr/bin/dhtvpn-connect-all
-RUN echo 'done' | tee -a /usr/bin/dhtvpn-connect-all
-RUN chmod 755 /usr/bin/dhtvpn-connect-all
+#RUN echo '#!/bin/sh' | tee /usr/bin/dhtvpn-connect-all
+#RUN echo 'for tox_friend in $(ratox-list-friends); do' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '  if [ -p "$tox_friend/file_out" ]; then' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '    echo "connecting $tox_friend to openVPN" >> connect.log' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '  fi' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '  if [ -p "$tox_friend/file_out" ]; then' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '    cat < $tox_friend/file_out | nc -u 192.168.5.3 1194 > $tox_friend/file_in' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '  else' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '    echo "$tox_friend/file_out not found" >> connect.err' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo '  fi' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN echo 'done' | tee -a /usr/bin/dhtvpn-connect-all
+#RUN chmod 755 /usr/bin/dhtvpn-connect-all
 
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
