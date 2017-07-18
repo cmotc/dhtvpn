@@ -20,14 +20,16 @@ all:
 	docker stop alpine-ratox
 	docker stop alpine-ratox-client
 	@echo "Building Client Containers Complete"
+	make tar
 	#make run-openvpn
 
-include ratox/include.mk
-include openvpn/include.mk
-include openvpn-client/include.mk
 include network.mk
 
 #include config.mk
+
+runclient:
+	make run-ratox-client
+	make run-openvpn-client
 
 dhtvpn-connect-all:
 	docker exec \
@@ -45,3 +47,5 @@ ratox-server-pipecheck:
 prune:
 	docker system prune -f
 
+tar:
+	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client openvpn/include.mk ratox/include.mk
