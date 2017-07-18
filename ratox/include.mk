@@ -18,8 +18,7 @@ run-ratox:
 		--name alpine-ratox \
 		--network dhtvpn-network \
 		--ip 192.168.5.2 \
-		-v ratox:/var/lib/ratox/ \
-		-t alpine-ratox ratox /var/lib/ratox/server.save; echo
+		-t alpine-ratox ratox /var/lib/ratox/server.save
 	sleep 2
 	make ratox-get-id
 
@@ -37,7 +36,7 @@ init-ratox-client:
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
 		-p 1194:1194 \
-		-t alpine-ratox ratox /var/lib/ratox/client.save; echo
+		-t alpine-ratox ratox /var/lib/ratox/client.save
 	sleep 2
 	make ratox-get-id-client
 
@@ -47,7 +46,7 @@ run-ratox-client:
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
 		-p 1194:1194 \
-		-t alpine-ratox-client ratox /var/lib/ratox/client.save; echo
+		-t alpine-ratox-client ratox /var/lib/ratox/client.save
 	sleep 2
 	make ratox-get-id-client
 
