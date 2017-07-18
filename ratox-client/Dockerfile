@@ -42,7 +42,5 @@ RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
 RUN delgroup grsec-tpe
 USER ratox
-WORKDIR /var/lib/ratox
 EXPOSE 1194/udp
-CMD ["/usr/local/bin/ratox"]
-
+WORKDIR /var/lib/ratox
