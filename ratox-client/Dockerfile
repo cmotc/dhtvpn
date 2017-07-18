@@ -36,11 +36,10 @@ RUN chmod 755 /usr/bin/ratox-accept-friends
 #RUN echo 'done' | tee -a /usr/bin/dhtvpn-connect-all
 #RUN chmod 755 /usr/bin/dhtvpn-connect-all
 
-COPY client.save /var/lib/ratox/client.save
-
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
 RUN delgroup grsec-tpe
 USER ratox
+COPY client.save /var/lib/ratox/client.save
 EXPOSE 1194/udp
 WORKDIR /var/lib/ratox
