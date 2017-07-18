@@ -5,7 +5,6 @@ install-client:
 	make build-toxcore
 	make build-ratox-client
 	make build-openvpn-client
-	make build-ratox-client
 	make run-ratox-client
 
 install-server:
