@@ -19,8 +19,8 @@ all:
 	make ratox-client-clean-id
 	make ratox-accept-friends
 	make ratox-copy-saves
-	#docker stop alpine-ratox
-	#docker stop alpine-ratox-client
+	docker stop alpine-ratox
+	docker stop alpine-ratox-client
 	@echo "Building Client Containers Complete"
 	make tar
 	#make run-openvpn
@@ -57,4 +57,4 @@ prune:
 	docker system prune -f
 
 tar:
-	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client config.mk openvpn/include.mk ratox/include.mk
+	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client config.mk openvpn/include.mk ratox/include.mk client.save
