@@ -19,7 +19,7 @@ all:
 	make ratox-client-clean-id
 	make ratox-accept-friends
 	make ratox-copy-saves
-	docker stop alpine-ratox
+	#docker stop alpine-ratox
 	docker stop alpine-ratox-client
 	@echo "Building Client Containers Complete"
 	make tar
