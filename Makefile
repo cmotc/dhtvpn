@@ -1,6 +1,7 @@
 all:
 	@echo "Building Server Containers"
-	make dhtvpn-network-create; \
+	make dhtvpn-network-create; echo network created
+	make build-toxcore
 	make build-ratox
 	make build-openvpn; echo pass-over
 	@echo "Building Containers finished"

@@ -1,4 +1,5 @@
 
+include libtoxcore/include.mk
 include ratox/include.mk
 include openvpn/include.mk
 include openvpn-client/include.mk
