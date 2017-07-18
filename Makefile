@@ -28,6 +28,7 @@ install-server:
 	make ratox-clean-id
 	make ratox-client-clean-id
 	make check-config-exists
+	docker stop alpine-ratox-client
 	make build-ratox-client
 	make run-ratox-client
 	@echo "Building Client Containers Complete"
