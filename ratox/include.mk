@@ -11,7 +11,7 @@ enter-running-ratox-client:
 	docker exec -i -t alpine-ratox-client /bin/sh
 
 run-ratox:
-	docker run -id \
+	docker run -id --rm \
 		--name alpine-ratox \
 		--network dhtvpn-network \
 		--ip 192.168.5.2 \
@@ -29,7 +29,7 @@ ratox-clean-id:
 		cat /var/lib/ratox/id) >> config.mk
 
 run-ratox-client:
-	docker run -id \
+	docker run -id --rm \
 		--name alpine-ratox-client \
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
