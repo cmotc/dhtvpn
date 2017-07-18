@@ -29,7 +29,7 @@ all:
 
 include network.mk
 
-#include config.mk
+include config.mk
 
 runclient:
 	make run-ratox-client
