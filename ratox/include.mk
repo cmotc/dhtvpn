@@ -62,6 +62,12 @@ ratox-list-friends:
 		-t alpine-ratox \
 		/usr/bin/ratox-list-friends
 
+ratox-list-client-friends:
+	docker exec \
+		--user ratox \
+		-t alpine-ratox-client \
+		/usr/bin/ratox-list-friends
+
 ratox-list-requests:
 	docker exec \
 		--user ratox \
