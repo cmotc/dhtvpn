@@ -26,7 +26,7 @@ all:
 
 include network.mk
 
-#include config.mk
+include config.mk
 
 runclient:
 	make run-ratox-client
@@ -37,7 +37,14 @@ dhtvpn-connect-all:
 		-d \
 		--user ratox \
 		-t alpine-ratox \
-		cat < $(ratox_client)/file_out | nc -u 192.168.5.3 1194 > $(ratox_client)/file_in'
+		cat < /var/lib/ratox/$(ratox_client)/file_out | nc -u 192.168.5.3 1194 > /var/lib/ratox/$(ratox_client)/file_in'
+
+dhtvpn-connect-client:
+	docker exec \
+		-d \
+		--user ratox \
+		-t alpine-ratox-client \
+		nc -lv 1194 > /var/lib/ratox/$(ratox_server)/file_in < /var/lib/ratox/$(ratox_server)/file_out
 
 ratox-server-pipecheck:
 	docker exec \
