@@ -31,24 +31,23 @@ ratox-clean-id:
 		-t alpine-ratox \
 		cat /var/lib/ratox/id) >> config.mk
 
-run-ratox-client:
+init-ratox-client:
 	docker run -id --rm \
 		--name alpine-ratox-client \
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
-		-v ratox-client:/var/lib/ratox/ \
 		-p 1194:1194 \
 		-t alpine-ratox ratox /var/lib/ratox/client.save; echo
 	sleep 2
 	make ratox-get-id-client
 
-run-ratox-vpn-client:
+run-ratox-client:
 	docker run -id --rm \
 		--name alpine-ratox-client \
 		--network dhtvpn-network \
 		--ip 192.168.5.4 \
 		-p 1194:1194 \
-		-t alpine-ratox ratox /var/lib/ratox/client.save; echo
+		-t alpine-ratox-client ratox /var/lib/ratox/client.save; echo
 	sleep 2
 	make ratox-get-id-client
 

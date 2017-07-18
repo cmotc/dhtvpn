@@ -13,15 +13,14 @@ all:
 	@echo "Building Client Containers"
 	make build-openvpn-client; echo openvpn
 	make run-ratox; sleep 3
-	make run-ratox-client; sleep 3
+	make init-ratox-client; sleep 3
+	make ratox-copy-saves
+	make ratox-client-friend-request && sleep 3 && make ratox-accept-friends
 	make ratox-clean-id
 	make ratox-client-clean-id
-	make ratox-client-friend-request && sleep 3
 	make check-config-exists
-	make ratox-accept-friends
-	make ratox-copy-saves
 	make build-ratox-client
-	make run-ratox-vpn-client
+	make run-ratox-client
 	@echo "Building Client Containers Complete"
 	make tar
 	#make run-openvpn
