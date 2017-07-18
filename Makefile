@@ -59,7 +59,7 @@ dhtvpn-connect-client:
 		-d \
 		--user ratox \
 		-t alpine-ratox-client \
-		nc -lv 1194 > /var/lib/ratox/$(ratox_server)/file_in < /var/lib/ratox/$(ratox_server)/file_out
+		nc -lv 1194 > /var/lib/ratox/$(ratox_service)/file_in < /var/lib/ratox/$(ratox_service)/file_out
 
 ratox-server-pipecheck:
 	docker exec \
