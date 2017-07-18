@@ -40,6 +40,16 @@ run-ratox-client:
 	sleep 2
 	make ratox-get-id-client
 
+run-ratox-vpn-client:
+	docker run -id --rm \
+		--name alpine-ratox-client \
+		--network dhtvpn-network \
+		--ip 192.168.5.4 \
+		-p 1194:1194 \
+		-t alpine-ratox ratox /var/lib/ratox/client.save
+	sleep 2
+	make ratox-get-id-client
+
 ratox-client-clean-id:
 	@grep -v ratox_client config.mk > config.mk.tmp; \
 	mv config.mk.tmp config.mk
