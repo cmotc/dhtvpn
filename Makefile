@@ -2,6 +2,7 @@ dummy:
 	@echo
 
 install-client:
+	make dhtvpn-network-create; echo network created
 	make build-toxcore
 	make build-ratox-client
 	make build-openvpn-client
