@@ -26,7 +26,7 @@ run-ratox:
 ratox-clean-id:
 	@grep -v ratox_service config.mk > config.mk.tmp; \
 	mv config.mk.tmp config.mk
-	@echo ratox_service = $(shell docker exec \
+	echo ratox_service = $(shell docker exec \
 		--user ratox \
 		-t alpine-ratox \
 		cat /var/lib/ratox/id) >> config.mk
@@ -55,7 +55,7 @@ run-ratox-vpn-client:
 ratox-client-clean-id:
 	@grep -v ratox_client config.mk > config.mk.tmp; \
 	mv config.mk.tmp config.mk
-	@echo ratox_client = $(shell docker exec \
+	echo ratox_client = $(shell docker exec \
 		--user ratox \
 		-t alpine-ratox-client \
 		cat /var/lib/ratox/id) >> config.mk
