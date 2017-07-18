@@ -8,14 +8,14 @@ all:
 	@echo
 	@echo "Initializing OpenVPN certificates:"
 	make run-openvpn; sleep 1
-	make openvpn-get-ccert; docker stop alpine-openvpn-server; echo pass-over
+	make openvpn-get-ccert; docker stop alpine-openvpn-server; echo certs generated
 	@echo "Initializing OpenVPN certificates Complete"
 	@echo "Building Client Containers"
-	make build-openvpn-client; \
-	make run-ratox; \
+	make build-openvpn-client; echo openvpn
+	make run-ratox; sleep 3
+	make run-ratox-client; sleep 3
 	make ratox-clean-id
 	make check-config-exists
-	make run-ratox-client; sleep 1
 	make ratox-client-friend-request && sleep 3
 	make ratox-client-clean-id
 	make ratox-accept-friends
