@@ -20,6 +20,8 @@ run-ratox:
 	make ratox-get-id | tail -n +4
 
 ratox-clean-id:
+	@grep -v ratox_service config.mk > config.mk.tmp; \
+	mv config.mk.tmp config.mk
 	@echo ratox_service = $(shell docker exec \
 		--user ratox \
 		-t alpine-ratox \

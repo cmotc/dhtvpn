@@ -1,18 +1,33 @@
 all:
+	@echo "Building Server Containers"
 	make dhtvpn-network-create; \
-	make build-ratox; \
-	make build-openvpn; \
-	make run-openvpn; \
-	make openvpn-get-ccert && docker stop alpine-openvpn-server && \
+	make build-ratox
+	make build-openvpn
+	@echo "Building Containers finished"
+	@echo
+	@echo "Initializing OpenVPN certificates:"
+	make run-openvpn; sleep 1
+	make openvpn-get-ccert && docker stop alpine-openvpn-server
+	@echo "Initializing OpenVPN certificates Complete"
+	@echo "Building Client Containers"
 	make build-openvpn-client; \
-	#make run-ratox
+	make run-ratox; \
+	make ratox-clean-id
+	make check-config-exists
+	make run-ratox-client; sleep 1
+	make ratox-client-friend-request && sleep 3
+	make ratox-accept-friends
+	docker stop alpine-ratox
+	docker stop alpine-ratox-client
+	@echo "Building Client Containers Complete"
 	#make run-openvpn
 
 include ratox/include.mk
 include openvpn/include.mk
 include openvpn-client/include.mk
 include network.mk
-include config.mk
+
+#include config.mk
 
 dhtvpn-connect-all:
 	docker exec \

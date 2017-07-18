@@ -13,3 +13,7 @@ grharden:
 	sudo sysctl -w kernel.grsecurity.chroot_deny_mknod=1
 	sudo sysctl -p
 	sudo sysctl kernel.grsecurity.chroot_deny_mknod
+
+check-config-exists:
+	$(shell [ -f config.mk ] && sed -i 's|#include config.mk|include config.mk|' Makefile)
+	@echo config exists
