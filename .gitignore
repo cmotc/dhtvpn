@@ -5,3 +5,5 @@ redist.tar.gz
 client.save
 server.save
 *.save
+ratox-client/client.save
+ratox/server.save

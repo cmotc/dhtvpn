@@ -98,5 +98,5 @@ ratox-pipelog:
 		cat *.log *.err
 
 ratox-copy-saves:
-	docker cp alpine-ratox:/var/lib/ratox/server.save .
-	docker cp alpine-ratox-client:/var/lib/ratox/client.save .
+	docker cp alpine-ratox:/var/lib/ratox/server.save ratox/server.save
+	docker cp alpine-ratox-client:/var/lib/ratox/client.save ratox-client/client.save
