@@ -30,7 +30,7 @@ all:
 
 include network.mk
 
- include config.mk
+#include config.mk
 
 test:
 	@echo it works

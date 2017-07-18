@@ -26,12 +26,12 @@ check-config-exists:
 	@echo config exists
 
 push:
-	sed -i 's|#include config.mk| include config.mk|' Makefile
+	sed -i 's| include config.mk|#include config.mk|' Makefile
 	git add .
 	git commit -am "fine-tuning"
 	git push
 
 pull:
-	sed -i 's| include config.mk|#include config.mk|' Makefile
+	sed -i 's|#include config.mk| include config.mk|' Makefile
 	git commit -am "stash"
 	git pull
