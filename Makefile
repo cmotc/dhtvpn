@@ -16,6 +16,7 @@ all:
 	make check-config-exists
 	make run-ratox-client; sleep 1
 	make ratox-client-friend-request && sleep 3
+	make ratox-client-clean-id
 	make ratox-accept-friends
 	docker stop alpine-ratox
 	docker stop alpine-ratox-client

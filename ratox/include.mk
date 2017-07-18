@@ -11,7 +11,7 @@ enter-running-ratox-client:
 	docker exec -i -t alpine-ratox-client /bin/sh
 
 run-ratox:
-	docker run -id --rm \
+	docker run -id \
 		--name alpine-ratox \
 		--network dhtvpn-network \
 		--ip 192.168.5.2 \
@@ -35,6 +35,14 @@ run-ratox-client:
 		-t alpine-ratox ratox
 	sleep 2
 	make ratox-get-id-client
+
+ratox-client-clean-id:
+	@grep -v ratox_client config.mk > config.mk.tmp; \
+	mv config.mk.tmp config.mk
+	@echo ratox_service = $(shell docker exec \
+		--user ratox \
+		-t alpine-ratox-client \
+		cat /var/lib/ratox/id) >> config.mk
 
 ratox-client-friend-request:
 	docker exec -i -t alpine-ratox-client /bin/sh -c 'echo "$(ratox_service)" > /var/lib/ratox/request/in'
