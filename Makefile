@@ -60,4 +60,4 @@ prune:
 
 tar:
 	rm -fv redist.tar.gz
-	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client config.mk openvpn/include.mk ratox/Dockerfile ratox/include.mk ratox-client/client.save libtoxcore/
+	tar -cvzf redist.tar.gz Makefile network.mk openvpn-client config.mk openvpn/include.mk ratox/Dockerfile ratox/include.mk ratox-client/ libtoxcore/
