@@ -39,7 +39,10 @@ RUN chmod 755 /usr/bin/ratox-accept-friends
 RUN sed -i 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /tmp/tox
 RUN delgroup grsec-tpe
-USER ratox
 COPY client.save /var/lib/ratox/client.save
+RUN chown ratox:ratox /var/lib/ratox/client.save
+RUN chmod 644 /var/lib/ratox/client.save
+USER ratox
+
 EXPOSE 1194/udp
 WORKDIR /var/lib/ratox
