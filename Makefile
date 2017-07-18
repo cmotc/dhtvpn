@@ -15,9 +15,9 @@ all:
 	make run-ratox; sleep 3
 	make run-ratox-client; sleep 3
 	make ratox-clean-id
-	make check-config-exists
 	make ratox-client-friend-request && sleep 3
 	make ratox-client-clean-id
+	make check-config-exists
 	make ratox-accept-friends
 	make ratox-copy-saves
 	make build-ratox-client
