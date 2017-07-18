@@ -1,4 +1,14 @@
-all:
+dummy:
+	@echo
+
+install-client:
+	make build-toxcore
+	make build-ratox-client
+	make build-openvpn-client
+	make build-ratox-client
+	make run-ratox-client
+
+install-server:
 	@echo "Building Server Containers"
 	make dhtvpn-network-create; echo network created
 	make build-toxcore
