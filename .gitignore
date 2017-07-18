@@ -6,3 +6,4 @@ server.save
 *.save
 ratox-client/client.save
 ratox/server.save
+config.mk
