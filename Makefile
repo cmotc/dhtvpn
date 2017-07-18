@@ -7,7 +7,7 @@ all:
 	@echo
 	@echo "Initializing OpenVPN certificates:"
 	make run-openvpn; sleep 1
-	make openvpn-get-ccert && docker stop alpine-openvpn-server
+	make openvpn-get-ccert; docker stop alpine-openvpn-server; echo pass-over
 	@echo "Initializing OpenVPN certificates Complete"
 	@echo "Building Client Containers"
 	make build-openvpn-client; \
