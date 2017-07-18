@@ -32,6 +32,5 @@ push:
 	git push
 
 pull:
-	sed -i 's|#include config.mk| include config.mk|' Makefile
 	git commit -am "stash"; echo stash
 	git pull
