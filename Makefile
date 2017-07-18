@@ -2,7 +2,7 @@ all:
 	@echo "Building Server Containers"
 	make dhtvpn-network-create; \
 	make build-ratox
-	make build-openvpn
+	make build-openvpn; echo pass-over
 	@echo "Building Containers finished"
 	@echo
 	@echo "Initializing OpenVPN certificates:"
@@ -35,7 +35,7 @@ test:
 	@echo it works
 
 push:
-	sed -i 's| include config.mk|#include config.mk|' Makefile
+	sed -i 's|#include config.mk|#include config.mk|' Makefile
 	git add .
 	git commit -am "fine-tuning"
 	git push
