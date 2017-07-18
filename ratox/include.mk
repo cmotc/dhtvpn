@@ -1,5 +1,7 @@
 build-ratox:
 	cd ratox && docker build -t alpine-ratox .
+
+build-ratox-client:
 	cd ratox-client && docker build -t alpine-ratox-client .
 
 enter-ratox:

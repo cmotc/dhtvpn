@@ -20,6 +20,7 @@ all:
 	make ratox-client-clean-id
 	make ratox-accept-friends
 	make ratox-copy-saves
+	make build-ratox-client
 	@echo "Building Client Containers Complete"
 	make tar
 	#make run-openvpn
