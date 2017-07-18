@@ -120,7 +120,5 @@ ratox-pipelog:
 ratox-copy-saves:
 	docker cp alpine-ratox:/var/lib/ratox/server.save server.save
 	docker cp alpine-ratox-client:/var/lib/ratox/client.save client.save
-	docker stop alpine-ratox
-	docker stop alpine-ratox-client
 	mv client.save ratox-client/client.save
 	mv server.save ratox/server.save
