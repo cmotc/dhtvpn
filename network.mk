@@ -21,5 +21,5 @@ grharden:
 	sudo sysctl kernel.grsecurity.chroot_deny_mknod
 
 check-config-exists:
-	$(shell [ -f config.mk ] && sed -i 's|#include config.mk|include config.mk|' Makefile)
+	$(shell [ -f config.mk ] && sed -i 's|#include config.mk| include config.mk|' Makefile)
 	@echo config exists

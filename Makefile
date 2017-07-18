@@ -29,7 +29,16 @@ all:
 
 include network.mk
 
-#include config.mk
+# include config.mk
+
+test:
+	@echo it works
+
+push:
+	sed -i 's| include config.mk|#include config.mk|' Makefile
+	git add .
+	git commit -am "fine-tuning"
+	git push
 
 runclient:
 	make run-ratox-client
