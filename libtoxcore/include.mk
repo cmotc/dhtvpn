@@ -1,2 +1,2 @@
 build-toxcore:
-	cd ratox && docker build -t alpine-toxcore .
+	cd libtoxcore && docker build -t alpine-toxcore .
